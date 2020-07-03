@@ -1,0 +1,73 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery fSelect Plugin Demo</title>
+
+<link href="css/fSelect.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <select id="demo1" name="demo1" multiple="multiple">
+        <option value="cp">C++</option>
+        <option value="cs">C#</option>
+        <option value="oc">Object C</option>
+        <option value="c">C</option>
+        <option value="js">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="asp">ASP</option>
+        <option value="jsp">JSP</option>
+    </select>
+    <select id="demo2" name="demo2" multiple="multiple">
+        <option value="cp">C++</option>
+        <option value="cs">C#</option>
+        <option value="oc">Object C</option>
+        <option value="c">C</option>
+        <option value="js">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="asp">ASP</option>
+        <option value="jsp">JSP</option>
+    </select>
+    <select id="demo3" name="demo3" multiple="multiple">
+        <option value="cp">C++</option>
+        <option value="cs">C#</option>
+        <option value="oc">Object C</option>
+        <option value="c">C</option>
+        <option value="js">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="asp">ASP</option>
+        <option value="jsp">JSP</option>
+    </select>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/fSelect.js"></script>
+<script>
+    $(function() {
+        let dom = [$('#demo1'),$('#demo2'),$('#demo3')],
+            selectStr1 = 'C++',
+            selectStr2 = 'JavaScript,JSP',
+            selectStr3 = 'C++,JavaScript,JSP',
+            selectStr = [selectStr1,selectStr2,selectStr3];
+        dom.forEach((v,i) => {
+            v.fSelect();
+            if(selectStr[i]){
+                $('.fs-wrap .fs-label')[i].innerText = selectStr[i]
+            }
+            $(`.fs-wrap:nth-child(${i+1}) .fs-option`).each((ci,cv) => {
+                if(selectStr[i].split(',').includes(cv.textContent)){
+                    cv.classList.add('selected')
+                }
+            })
+        })
+        // $('.fs-wrap .fs-label').each((i,v) => {
+        //     console.log(v.innerText)
+        // })
+    })
+
+</script>
+
+</body>
+</html>
